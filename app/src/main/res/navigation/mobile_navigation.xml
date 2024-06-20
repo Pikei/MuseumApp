@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.museumapp.ui.home.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_visited"
+        android:name="com.example.museumapp.ui.visited.VisitedFragment"
+        android:label="@string/visited_fragment_label"
+        tools:layout="@layout/fragment_visited" />
+
+    <fragment
+        android:id="@+id/nav_unvisited"
+        android:name="com.example.museumapp.ui.unvisited.UnvisitedFragment"
+        android:label="@string/unvisited_fragment_label"
+        tools:layout="@layout/fragment_unvisited" />
+
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.example.museumapp.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details"/>
+
+</navigation>

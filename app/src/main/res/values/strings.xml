@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MuseumApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_visited">Visited</string>
+    <string name="menu_not_seen">Not seen yet</string>
+
+    <string name="home_fragment_label">All Museums</string>
+    <string name="visited_fragment_label">Visited Museums</string>
+    <string name="unvisited_fragment_label">Museums, you haven\'t visit yet</string>
+</resources>
