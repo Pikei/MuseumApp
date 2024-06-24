@@ -7,7 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.museumapp.R
 
-class MuseumAdapter(private val museums: List<Map<String, String>>) : RecyclerView.Adapter<MuseumAdapter.MuseumViewHolder>() {
+class MuseumAdapter(
+    private var museums: List<Map<String, String>>,
+    private val clickListener: (String) -> Unit
+) : RecyclerView.Adapter<MuseumAdapter.MuseumViewHolder>() {
 
     class MuseumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTextView: TextView = view.findViewById(R.id.museum_name)
@@ -25,7 +28,16 @@ class MuseumAdapter(private val museums: List<Map<String, String>>) : RecyclerVi
         holder.nameTextView.text = museum["name"]
         holder.addressTextView.text = museum["address"]
         holder.themeTextView.text = museum["theme"]
+
+        holder.itemView.setOnClickListener {
+            museum["name"]?.let { name -> clickListener(name) }
+        }
     }
 
     override fun getItemCount() = museums.size
+
+    fun updateList(newMuseums: List<Map<String, String>>) {
+        museums = newMuseums
+        notifyDataSetChanged()
+    }
 }

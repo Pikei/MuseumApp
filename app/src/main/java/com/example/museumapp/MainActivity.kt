@@ -1,6 +1,7 @@
 package com.example.museumapp
 
 import android.os.Bundle
+import android.widget.SearchView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,6 +12,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.museumapp.database.DatabaseHelper
 import com.example.museumapp.databinding.ActivityMainBinding
+import com.example.museumapp.ui.SearchableFragment
+import com.example.museumapp.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +41,22 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val searchView: SearchView = binding.appBarMain.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val currentFragment = supportFragmentManager
+                    .primaryNavigationFragment?.childFragmentManager?.fragments?.firstOrNull()
+                if (currentFragment is SearchableFragment) {
+                    currentFragment.filterData(newText.orEmpty())
+                }
+                return true
+            }
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {
