@@ -11,4 +11,8 @@
     <string name="home_fragment_label">All Museums</string>
     <string name="visited_fragment_label">Visited Museums</string>
     <string name="unvisited_fragment_label">Museums, you haven\'t visit yet</string>
+    <string name="i_have_visited_that_museum">I have visited that museum</string>
+    <string name="address">Address</string>
+    <string name="name">Name</string>
+    <string name="theme">Theme</string>
 </resources>

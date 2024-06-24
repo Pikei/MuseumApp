@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.museumapp.R
 import com.example.museumapp.database.DatabaseHelper
 import com.example.museumapp.databinding.FragmentHomeBinding
-import com.example.museumapp.ui.MuseumAdapter
-import com.example.museumapp.ui.SearchableFragment
+import com.example.museumapp.ui.details.DetailsFragment
+import com.example.museumapp.ui.utils.MuseumAdapter
+import com.example.museumapp.ui.utils.SearchableFragment
 
 class HomeFragment : Fragment(), SearchableFragment {
 
@@ -45,7 +48,11 @@ class HomeFragment : Fragment(), SearchableFragment {
     }
 
     private fun onSectionClick(name: String) {
-        Toast.makeText(requireContext(), "Clicked on: $name", Toast.LENGTH_SHORT).show()
+        val detailsFragment = DetailsFragment()
+        val bundle = Bundle()
+        bundle.putString("name", name)
+        detailsFragment.arguments = bundle
+        findNavController().navigate(R.id.nav_details, bundle)
     }
 
     override fun onDestroyView() {

@@ -59,4 +59,11 @@ dependencies {
     implementation(libs.androidx.appcompat)
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+
+    implementation("com.google.maps.android:maps-compose:4.4.1")
+
+    implementation("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.42")
+    implementation("com.google.android.gms:play-services-maps:18.0.0")
+
 }

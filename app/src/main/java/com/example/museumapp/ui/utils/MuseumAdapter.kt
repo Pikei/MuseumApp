@@ -1,5 +1,6 @@
-package com.example.museumapp.ui
+package com.example.museumapp.ui.utils
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ class MuseumAdapter(
 
     override fun getItemCount() = museums.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateList(newMuseums: List<Map<String, String>>) {
         museums = newMuseums
         notifyDataSetChanged()

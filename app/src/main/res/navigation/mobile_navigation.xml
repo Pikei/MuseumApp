@@ -9,24 +9,40 @@
         android:id="@+id/nav_home"
         android:name="com.example.museumapp.ui.home.HomeFragment"
         android:label="@string/home_fragment_label"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_details"
+            app:destination="@id/nav_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_visited"
         android:name="com.example.museumapp.ui.visited.VisitedFragment"
         android:label="@string/visited_fragment_label"
-        tools:layout="@layout/fragment_visited" />
+        tools:layout="@layout/fragment_visited">
+        <action
+            android:id="@+id/action_visited_to_details"
+            app:destination="@id/nav_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_unvisited"
         android:name="com.example.museumapp.ui.unvisited.UnvisitedFragment"
         android:label="@string/unvisited_fragment_label"
-        tools:layout="@layout/fragment_unvisited" />
+        tools:layout="@layout/fragment_unvisited">
+        <action
+            android:id="@+id/action_unvisited_to_details"
+            app:destination="@id/nav_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_details"
         android:name="com.example.museumapp.ui.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details"/>
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="museumName"
+            app:argType="string"/>
+    </fragment>
 
 </navigation>

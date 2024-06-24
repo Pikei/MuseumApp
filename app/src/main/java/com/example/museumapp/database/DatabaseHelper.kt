@@ -84,14 +84,29 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         54.395688
     )
 
+    private val imageNames = listOf(
+        "muzeum_ii_wojny_swiatowej_w_gdansku",
+        "muzeum_poczty_polskiej",
+        "ecs",
+        "muzeum_emigracji",
+        "okm",
+        "muzeum_archeologiczne",
+        "muzeum_bursztynu",
+        "muzeum_narodowe_w_gdansku",
+        "ratusz_gdansk",
+        "muzeum_gdyni",
+        "muzeum_sopotu",
+        "twierdza_wisloujscie"
+    )
+
     companion object {
         private const val DATABASE_NAME = "museum.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         private const val CREATE_TABLE = "CREATE TABLE IF NOT EXISTS museums " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, address TEXT, theme TEXT, " +
                 "longitude REAL, latitude REAL, " +
-                "seen INTEGER, visitedDate TEXT)"
+                "seen INTEGER, visitedDate TEXT, imgName TEXT)"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -99,7 +114,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+        db?.execSQL("DROP TABLE IF EXISTS museums")
+        onCreate(db!!)
     }
 
     //metody wykorzystywane przez zewnętrzne elementy aplikacji
@@ -227,7 +243,48 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             values.put("latitude", latitudes[i])
             values.put("seen", 0)
             values.put("visitedDate", "")
+            values.put("imgName", imageNames[i])
             db.insert("museums", null, values)
         }
+    }
+
+    fun getVisitedDate(name: String): String {
+        val db = this.readableDatabase
+        val cursor = db.query(
+            "museums",
+            arrayOf("visitedDate"),
+            "name = ?",
+            arrayOf(name),
+            null,
+            null,
+            null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                return it.getString(it.getColumnIndexOrThrow("visitedDate"))
+            }
+        }
+        db.close()
+        cursor?.close()
+        return ""
+    }
+
+    fun getImgName(name: String): String {
+        val db = this.readableDatabase
+        val cursor = db.query(
+            "museums",
+            arrayOf("imgName"),
+            "name = ?",
+            arrayOf(name),
+            null,
+            null,
+            null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                return it.getString(it.getColumnIndexOrThrow("imgName"))
+            }
+        }
+        db.close()
+        cursor?.close()
+        return ""
     }
 }

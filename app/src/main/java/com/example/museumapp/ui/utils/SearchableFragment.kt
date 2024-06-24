@@ -1,4 +1,4 @@
-package com.example.museumapp.ui
+package com.example.museumapp.ui.utils
 
 interface SearchableFragment {
     fun filterData(query: String)

@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.museumapp.R
 import com.example.museumapp.database.DatabaseHelper
 import com.example.museumapp.databinding.FragmentUnvisitedBinding
-import com.example.museumapp.ui.MuseumAdapter
-import com.example.museumapp.ui.SearchableFragment
+import com.example.museumapp.ui.utils.MuseumAdapter
+import com.example.museumapp.ui.utils.SearchableFragment
 
 class UnvisitedFragment : Fragment(), SearchableFragment {
 
