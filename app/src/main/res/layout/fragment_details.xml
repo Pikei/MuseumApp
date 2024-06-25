@@ -63,7 +63,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="302dp"
+        android:layout_height="261dp"
         android:layout_marginBottom="24dp"
         tools:src="@tools:sample/avatars" />
 

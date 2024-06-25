@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">MuseumApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -15,4 +14,5 @@
     <string name="address">Address</string>
     <string name="name">Name</string>
     <string name="theme">Theme</string>
+    <string name="museum_details">Museum Details</string>
 </resources>

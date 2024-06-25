@@ -5,8 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -118,8 +116,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db!!)
     }
 
-    //metody wykorzystywane przez zewnętrzne elementy aplikacji
-
     fun init() {
         val db = this.writableDatabase
         val containsData = db.rawQuery("SELECT COUNT(*) FROM museums", null).use {
@@ -157,16 +153,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return result
     }
 
-    fun setMuseumAsVisited(name: String) {
-        val db = this.writableDatabase
-        val values = ContentValues()
-        values.put("seen", 1)
-        val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-        val currentDate = dateFormat.format(System.currentTimeMillis())
-        values.put("visitedDate", currentDate)
-        db.update("museums", values, "name = ?", arrayOf(name))
-    }
-
     fun setMuseumAsUnvisited(name: String) {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -195,7 +181,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return result
     }
 
-    //prywatne metody wykorzystywane wewnątrz klasy
+
     private fun allMuseumsCursor(db: SQLiteDatabase): Cursor? {
         return db.query(
             "museums",
@@ -266,6 +252,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         cursor?.close()
         return ""
+    }
+
+    fun setMuseumAsVisitedWithDate(museumName: String, date: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues().apply {
+            put("seen", 1)
+            put("visitedDate", date)
+        }
+        db.update("museums", contentValues, "name = ?", arrayOf(museumName))
     }
 
     fun getImgName(name: String): String {

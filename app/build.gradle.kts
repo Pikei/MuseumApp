@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -64,6 +65,5 @@ dependencies {
 
     implementation("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1")
     implementation("com.google.dagger:hilt-android-gradle-plugin:2.42")
-    implementation("com.google.android.gms:play-services-maps:18.0.0")
-
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 }

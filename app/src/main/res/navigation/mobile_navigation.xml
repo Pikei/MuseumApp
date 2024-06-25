@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/nav_details"
         android:name="com.example.museumapp.ui.details.DetailsFragment"
-        android:label="fragment_details"
+        android:label="@string/museum_details"
         tools:layout="@layout/fragment_details">
         <argument
             android:name="museumName"
