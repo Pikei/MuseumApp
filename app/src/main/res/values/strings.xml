@@ -15,4 +15,5 @@
     <string name="name">Name</string>
     <string name="theme">Theme</string>
     <string name="museum_details">Museum Details</string>
+    <string name="app_name">MuseumApp</string>
 </resources>
